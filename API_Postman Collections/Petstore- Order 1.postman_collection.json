@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "85bfd3a8-1c00-4dc8-8f1f-e0af7389ce2d",
+		"name": "Petstore- Order 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26303672"
+	},
+	"item": [
+		{
+			"name": "Place an order for a pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 900B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(900);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has correct date and Time\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"2023-03-11T18:22:52.\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"ID is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql(4);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Entire response Data is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql(4);\r",
+							"    pm.expect(jsonData.petId).to.eql(44);\r",
+							"    pm.expect(jsonData.quantity).to.eql(444);\r",
+							"    pm.expect(jsonData.status).to.eql(\"placed\");\r",
+							"    pm.expect(jsonData.complete).to.eql(true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Origin\", \"*\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Methods\", \"GET, POST, DELETE, PUT\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Headers\", \"Content-Type, api_key, Authorization\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Jetty(9.2.9.v20150224)\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"petId\": 44,\r\n    \"quantity\": 444,\r\n    \"shipDate\": \"2023-03-11T18:22:52.402+0000\",\r\n    \"status\": \"placed\",\r\n    \"complete\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find purchase order by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 900B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(900);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has correct date and Time\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"2023-03-11T18:22:52.\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"ID is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql(4);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Entire response Data is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql(4);\r",
+							"    pm.expect(jsonData.petId).to.eql(44);\r",
+							"    pm.expect(jsonData.quantity).to.eql(444);\r",
+							"    pm.expect(jsonData.status).to.eql(\"placed\");\r",
+							"    pm.expect(jsonData.complete).to.eql(true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Origin\", \"*\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Methods\", \"GET, POST, DELETE, PUT\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Headers\", \"Content-Type, api_key, Authorization\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Jetty(9.2.9.v20150224)\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order/4",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete purchase order by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 900B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(900);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"code is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Entire response Data is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.code).to.eql(200);\r",
+							"    pm.expect(jsonData.type).to.eql(\"unknown\");\r",
+							"    pm.expect(jsonData.message).to.eql(\"4\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Origin\", \"*\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Methods\", \"GET, POST, DELETE, PUT\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Headers\", \"Content-Type, api_key, Authorization\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Jetty(9.2.9.v20150224)\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order/4",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete order test 2nd time",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 900B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(900);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"code is correct - 404\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.code).to.eql(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Entire response Data is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.code).to.eql(404);\r",
+							"    pm.expect(jsonData.type).to.eql(\"unknown\");\r",
+							"    pm.expect(jsonData.message).to.eql(\"Order Not Found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Origin\", \"*\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Methods\", \"GET, POST, DELETE, PUT\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Headers\", \"Content-Type, api_key, Authorization\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Jetty(9.2.9.v20150224)\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order/4",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find deleted order by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 900B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(900);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"code is correct - 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.code).to.eql(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Entire response Data is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.code).to.eql(1);\r",
+							"    pm.expect(jsonData.type).to.eql(\"error\");\r",
+							"    pm.expect(jsonData.message).to.eql(\"Order not found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+							"    pm.response.to.have.header(\"Transfer-Encoding\", \"chunked\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Origin\", \"*\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Methods\", \"GET, POST, DELETE, PUT\");\r",
+							"    pm.response.to.have.header(\"Access-Control-Allow-Headers\", \"Content-Type, api_key, Authorization\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Jetty(9.2.9.v20150224)\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order/4",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
